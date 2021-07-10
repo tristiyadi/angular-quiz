@@ -12,7 +12,7 @@ import { FormDataService }     from '../../core/services/formData.service';
 })
 
 export class PersonalComponent implements OnInit {
-    title = 'Please tell us about yourself.';
+    title = 'Personal Material.';
     personal!: Personal | any;
     form: any;
     personalForm: FormGroup = new FormGroup ({
@@ -30,7 +30,7 @@ export class PersonalComponent implements OnInit {
         firstName: ['', [Validators.required,Validators.minLength(1), Validators.maxLength(50)]],
         umur : ['', [Validators.required,Validators.min(1), Validators.max(200)]],
         email: ['', [Validators.required,Validators.email]],
-        gender: ''
+        gender: ['', [Validators.required]]
       });
       this.personal = this.formDataService.getPersonal();
       if(this.personal) {
@@ -41,7 +41,7 @@ export class PersonalComponent implements OnInit {
           gender: this.personal.gender
         });
       }
-      // console.log(this.personalForm)
+      console.log(this.personalForm)
     }
     ngAfterViewInit(){
     }
