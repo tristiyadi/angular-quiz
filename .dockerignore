@@ -1,0 +1,6 @@
+**/*.pem
+**/.ssh
+**/node_modules
+.eslintrc.json
+.prettierrc.json
+.travis.yml

@@ -1,0 +1,80 @@
+<mat-card>
+  <form [formGroup]="personalForm" class="editForm" novalidate>
+      <div class="tab-pane fade in active">
+          <h4 class="head text-center">{{title}}</h4>
+          <br/>
+          <mat-card-content>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left">
+          <div class='row'>
+              <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                     <div class="form-group">
+                      <mat-form-field class="example-full-width" fxFlex="75%">
+                        <input matInput class="form-control input-md" formControlName="firstName" required id="firstName" name="firstName" type="text" placeholder="Nama Lengkap">
+                        <mat-hint align="end">
+                          Can contain only characters. Maximum {{personalForm.controls.firstName.value.length}}/50
+                        </mat-hint>
+                        <mat-error *ngIf="personalForm.controls.firstName.invalid">
+                        <div class="alert alert-danger" [hidden]="!personalForm.controls['firstName'].errors?.required">Nama Lengkap is required</div>
+                        <div  class="alert alert-danger" [hidden]="!personalForm.controls['firstName'].errors?.minlength">
+                          Maximmum alowed charactes are 1
+                        </div>
+                        <div  class="alert alert-danger" [hidden]="!personalForm.controls['firstName'].errors?.maxlength">
+                          Maximmum alowed charactes are 50
+                        </div>
+                      </mat-error>
+                      </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width" >
+                      <input matInput formControlName="umur" class="form-control input-md"  required id="umur" name="umur" type="text" placeholder="Umur"  inputNumber>
+                      <mat-hint align="end">
+                        Only Input Number Range min 1 to 200
+                      </mat-hint>
+                      <mat-error *ngIf="personalForm.controls.umur.invalid">
+                      <div class="alert alert-danger" [hidden]="!personalForm.controls['umur'].errors?.required">Umur is required</div>
+                      <div  class="alert alert-danger" [hidden]="!personalForm.controls['umur'].errors?.min">
+                        Minimum number are 1
+                      </div>
+                      <div  class="alert alert-danger" [hidden]="!personalForm.controls['umur'].errors?.max">
+                        Maximmum number are 200
+                      </div>
+                    </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width" >
+                      <input matInput formControlName="email" class="form-control input-md" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" id="email" name="email" type="text" placeholder="Email">
+                      <mat-error *ngIf="personalForm.controls.email.invalid">
+                        <div class="alert alert-danger" [hidden]="!personalForm.controls['email'].errors?.required">Email is required and must be valid</div>
+                      </mat-error>
+                      </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-radio-group aria-labelledby="radio-group-label" formControlName="gender"
+                                                      class="radio-group-choose-colorpicker radio-group mt-0 mb-0"
+                                                      name="gender" required
+                                                      required>
+                                                      <div class="row">
+                                                          <div class="col-lg-6">
+                                                              <mat-radio-button class="radio-button" value="laki">
+                                                                  Laki
+                                                              </mat-radio-button>
+                                                          </div>
+                                                          <div class="col-lg-6">
+                                                              <mat-radio-button class="radio-button" value="perempuan">
+                                                                  Perempuan
+                                                              </mat-radio-button>
+                                                          </div>
+                                                      </div>
+                                                  </mat-radio-group>
+                  </div>
+                  <div class="form-group text-center">
+                      <button class="btn btn-success btn-outline-rounded btn-info" [disabled]="personalForm.invalid || isProcess" (click)="goToNext(personal)"> Selanjutnya <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+                  </div>
+              </div>
+          </div>
+            </div>
+          </mat-card-content>
+      </div>
+  </form>
+  </mat-card>

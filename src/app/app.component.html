@@ -1,0 +1,16 @@
+<section >
+  <div class="container">
+      <div class="board">
+          <ng-navbar></ng-navbar>
+
+          <div class="tab-content">
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+    <div class="board">
+      <pre>{{ formData | json }}</pre>
+    </div>
+  </div>
+</section>
